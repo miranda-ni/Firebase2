@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="edit_text" type="id" />
+    <item name="editPhone" type="id" />
+    <item name="editText" type="id" />
+    <item name="countryPhoneCode" type="id" />
+    <item name="send" type="id" />
+    <item name="check" type="id" />
+</resources>
