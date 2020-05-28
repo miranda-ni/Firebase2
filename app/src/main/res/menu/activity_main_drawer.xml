@@ -16,5 +16,9 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_dehaze_black_24dp"
             android:title="ПРОЧЕЕ" />
+        <item
+            android:id="@+id/nav_firebase"
+            android:icon="@drawable/ic_insert_drive_file_black_24dp"
+            android:title="FIREBASE"/>
     </group>
 </menu>

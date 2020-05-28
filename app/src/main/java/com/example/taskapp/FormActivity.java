@@ -3,13 +3,18 @@ package com.example.taskapp;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.taskapp.models.Task;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import static com.daimajia.androidanimations.library.Techniques.Shake;
 
@@ -46,6 +51,29 @@ public class FormActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
+
+//        запись базаданных
+            room();
+            firebase();
+        finish();
+
+    }
+
+    private void firebase() {
+        FirebaseFirestore.getInstance().collection("tasks").add(task).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            @Override
+            public void onComplete(@NonNull com.google.android.gms.tasks.Task<DocumentReference> task) {
+                if (task.isSuccessful()){
+                     Toast.makeText(FormActivity.this, "successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(FormActivity.this, "error", Toast.LENGTH_SHORT).show();
+                }
+                }
+        });
+    }
+
+
+    private void room() {
         String title = editTitle.getText().toString().trim();
         String desc = editDesc.getText().toString().trim();
         if (title.isEmpty()){
@@ -68,14 +96,11 @@ public class FormActivity extends AppCompatActivity {
             task.setDesk(desc);
             App.getInstance().getDatabase().taskDao().update(task);
         }else {
-         task = new Task();
+            task = new Task();
             task.setTitle(title);
             task.setDesk(desc);
-        App.getInstance().getDatabase().taskDao().insert(task);
-//        запись базаданных
-        finish();
+            App.getInstance().getDatabase().taskDao().insert(task);
 
     }
-}
 
-}
+}}

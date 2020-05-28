@@ -109,10 +109,10 @@ public class PhoneActivity extends AppCompatActivity {
         String phone = countryPhoneCode.getText().toString().trim() + editPhone.getText().toString().trim();
         PhoneAuthProvider.getInstance().verifyPhoneNumber(phone, 60, TimeUnit.SECONDS, this, callbacks);
         Log.e("phone", "onClick: phone number" + phone);
-        editPhone.setVisibility(View.GONE);
-        send.setVisibility(View.GONE);
-        countryPhoneCode.setVisibility(View.GONE);
-        lottieAnimationView.setVisibility(View.GONE);
+//        editPhone.setVisibility(View.GONE);
+//        send.setVisibility(View.GONE);
+//        countryPhoneCode.setVisibility(View.GONE);
+//        lottieAnimationView.setVisibility(View.GONE);
 
 
     }
